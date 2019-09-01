@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="DnDApp.DamageMenu"
+             Title="Damage Menu"
+             BackgroundColor="{DynamicResource backgroundColor}">
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource buttonColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+            <!--<Setter Property="BorderColor" Value="{StaticResource Default}"/>-->
+            <Setter Property="BorderRadius" Value="5"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="android:Button.UseDefaultPadding" Value="true"/>
+            <Setter Property="android:Button.UseDefaultShadow" Value="true"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+            <Setter Property="PlaceholderColor" Value="{DynamicResource placeholderTextColor}"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center">
+                <!-- top controls -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Entry Keyboard="Numeric"
+                           Placeholder="Attack Bonus"
+                           HorizontalTextAlignment="Center"
+                           x:Name="attackBonusTextBox"
+                           MaxLength="5"
+                           Grid.Row="0" Grid.Column="0"/>
+                    <Entry Keyboard="Numeric"
+                           Placeholder="Damage Bonus"
+                           HorizontalTextAlignment="Center"
+                           x:Name="damageBonusTextBox"
+                           MaxLength="5"
+                           Grid.Row="0" Grid.Column="1"/>
+                    
+                    <!--Dice Buttons 20 through 4-->
+                    <Label Text="Attack Roll"
+                           FontSize="Large"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="1" Grid.Column="0"/>
+                    <Button Text="Roll"
+                            x:Name="attackRollButton"
+                            Clicked="AttackRollButton_Clicked"
+                            Grid.Row="1" Grid.Column="1"/>
+
+                    <Label Text="D12 Damage"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="2" Grid.Column="0"/>
+                    <Button Text="Roll"
+                            x:Name="D12RollButton"
+                            Clicked="D12RollButton_Clicked"
+                            Grid.Row="2" Grid.Column="1"/>
+
+                    <Label Text="D10 Damage"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="3" Grid.Column="0"/>
+                    <Button Text="Roll"
+                            x:Name="D10RollButton"
+                            Clicked="D10RollButton_Clicked"
+                            Grid.Row="3" Grid.Column="1"/>
+
+                    <Label Text="D8 Damage"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="4" Grid.Column="0"/>
+                    <Button Text="Roll"
+                            x:Name="D8RollButton"
+                            Clicked="D8RollButton_Clicked"
+                            Grid.Row="4" Grid.Column="1"/>
+
+                    <Label Text="D6 Damage"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="5" Grid.Column="0"/>
+                    <Button Text="Roll"
+                            x:Name="D6RollButton"
+                            Clicked="D6RollButton_Clicked"
+                            Grid.Row="5" Grid.Column="1"/>
+
+                    <Label Text="D4 Damage"
+                           FontSize="Medium"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Grid.Row="6" Grid.Column="0"/>
+                    <Button Text="Roll"
+                            x:Name="D4RollButton"
+                            Clicked="D4RollButton_Clicked"
+                            Grid.Row="6" Grid.Column="1"/>
+
+                    <!--Attack Menu Code-->
+                    <Button Text="Multi Attack" 
+                        x:Name="MultiAttackMenuButton" 
+                        Clicked="MultiAttackMenuButton_Clicked"
+                        Grid.Row="7" Grid.Column="0"/>
+
+                    <Button Text="Reset Multi Attack"
+                        x:Name="MultiAttackResetButton"
+                        IsVisible="False"
+                        Clicked="MultiAttackResetButton_Clicked"
+                        Grid.Row="8" Grid.Column="1"/>
+
+                    <Label Text="0" 
+                       x:Name="MultiAttackLabel" 
+                       IsVisible="False"
+                       FontSize="Medium" 
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center"
+                       Grid.Row="7" Grid.Column="1"/>
+
+                    <!--if switch is toggeled, modifiers will show in the roll-->
+                    <Grid Grid.Row="8" Grid.Column="0">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Add Bonus"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="0" Grid.Column="0"/>
+
+                        <Label Text="Show Bonus"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="0" Grid.Column="2"/>
+
+                        <Switch IsToggled="false" 
+                            x:Name="ShowAddititivesSwitch" 
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Grid.Row="0" Grid.Column="1"/>
+
+                    </Grid>
+                </Grid>
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <!-- middle controls -->
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <!-- bottom controls -->
+            </StackLayout>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Menu"
+                            x:Name="Menu"
+                            Clicked="Menu_Clicked"
+                            Grid.Row="0" Grid.Column="0"/>
+
+                <Button Text="Reset"
+                            x:Name="ResetButton"
+                            Clicked="ResetButton_Clicked"
+                            Grid.Row="0" Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage> 

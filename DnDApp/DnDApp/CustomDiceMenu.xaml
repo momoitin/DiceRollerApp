@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="DnDApp.CustomDiceMenu"
+             BackgroundColor="{DynamicResource backgroundColor}">
+
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource buttonColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+            <!--<Setter Property="BorderColor" Value="{StaticResource Default}"/>-->
+            <Setter Property="BorderRadius" Value="5"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="android:Button.UseDefaultPadding" Value="true"/>
+            <Setter Property="android:Button.UseDefaultShadow" Value="true"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+            <Setter Property="PlaceholderColor" Value="{DynamicResource placeholderTextColor}"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="Start"
+                         HorizontalOptions="Center"
+                         Padding="5,20">
+                <!-- top controls -->
+                
+                <Label Text="Roll Output"
+                       FontSize="Large"
+                       x:Name="RollOutputLabel"
+                       HorizontalOptions="Center"/>
+                
+            </StackLayout>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <!-- middle controls -->
+
+                <Label Text="Between"
+                       FontSize="Large"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalTextAlignment="Center"/>
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Entry x:Name="MinRollInput"
+                           ReturnType="Next"
+                           MaxLength="5"
+                           Keyboard="Numeric"
+                           Placeholder="0"
+                           HorizontalTextAlignment="Center"
+                           Completed="MinRollInput_Completed"
+                           Grid.Row="0" Grid.Column="0"/>
+
+                    <Entry x:Name="MaxRollInput"
+                           MaxLength="5"
+                           Keyboard="Numeric"
+                           Placeholder="0"
+                           HorizontalTextAlignment="Center"
+                           Grid.Row="0" Grid.Column="2"/>
+
+                    <Label Text="and"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalTextAlignment="Center"
+                           Grid.Row="0" Grid.Column="1"/>
+
+                    <Button Text="Roll"
+                            x:Name="RollButton"
+                            Clicked="RollButton_Clicked"
+                            HorizontalOptions="Center"
+                            Grid.Row="1" Grid.Column="1"/>
+                </Grid>
+                
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                <!-- bottom controls -->
+                
+            </StackLayout>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Main Menu"
+                        x:Name="MenuButton"
+                        Clicked="MenuButton_Clicked"
+                        Grid.Row="0" Grid.Column="0"/>
+
+                <Button Text="Reset"
+                        x:Name="ResetButton"
+                        Clicked="ResetButton_Clicked"
+                        Grid.Row="0" Grid.Column="1"/>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

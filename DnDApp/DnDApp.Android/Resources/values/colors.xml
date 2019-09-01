@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!--Colors for Main Theme-->
+  <color name="Primary">#7e3ff2</color>
+  <color name="PrimaryDark">#5300e8</color>
+  <color name="Accent">#6e0e91</color>
+  
+  <color name="WindowBackground">#e0e0e0</color>
+  <color name="White">#FFFFFF</color>
+  <color name="DarkGray">#373737</color>
+  <color name="Black">#000000</color>
+  
+  <color name="PlaceholderColor">#B37c42bd</color>
+
+  
+
+  <!--Colors for Dark Theme-->
+  <color name="launcher_background">#FFFFFF</color>
+  <color name="colorPrimary">#3F51B5</color>
+  <color name="colorPrimaryDark">#303F9F</color>
+  <color name="colorAccent">#FF4081</color>
+  
+</resources>

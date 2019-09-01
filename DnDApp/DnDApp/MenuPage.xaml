@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             x:Class="DnDApp.MenuPage"
+             Title="Menu"
+	         BackgroundColor="{DynamicResource backgroundColor}">
+
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BackgroundColor" Value="{DynamicResource buttonColor}"/>
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+            <!--<Setter Property="BorderColor" Value="{StaticResource Default}"/>-->
+            <Setter Property="BorderRadius" Value="5"/>
+            <Setter Property="BorderWidth" Value="0"/>
+            <Setter Property="android:Button.UseDefaultPadding" Value="true"/>
+            <Setter Property="android:Button.UseDefaultShadow" Value="true"/>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+        </Style>
+
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+            <Setter Property="PlaceholderColor" Value="{DynamicResource placeholderTextColor}"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Button Text="Dice Page" 
+                    x:Name="DicePage" 
+                    Clicked="DicePage_Clicked"/>
+
+            <Button Text="Custom Dice"
+                    x:Name="CustomDice"
+                    Clicked="CustomDice_Clicked"/>
+
+            <Button Text="Damage Menu" 
+                    x:Name="DamageMenu" 
+                    Clicked="DamageMenu_Clicked"/>
+            
+            <Button Text="Wallet" 
+                    x:Name="WalletMenu" 
+                    Clicked="WalletMenu_Clicked"/>
+
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Color Options" x:Name="ColorMenu" Clicked="ColorMenu_Clicked" Grid.Row="0" Grid.Column="0" ScaleY="1" TextColor="{DynamicResource textColor}"/>
+                
+            </Grid>
+
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <!-- middle controls -->
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End" Padding="5,10">
+                <!-- bottom controls -->
+                <Label Text="Version 1.2.4"
+                       Opacity="50"/>
+            </StackLayout>
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
