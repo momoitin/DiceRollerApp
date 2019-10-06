@@ -30,34 +30,49 @@
 
     <StackLayout>
         <!-- Place new controls here -->
-        <Label Text="Roll" 
-               HorizontalOptions="Center"
-               VerticalOptions="CenterAndExpand"
-               FontSize="Large"
-               HorizontalTextAlignment="Center"
-               x:Name="MainLabel"/>
+        
+        <StackLayout Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center">
+            <!-- top controls -->
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Button Text="D20" x:Name="D20" Clicked="D20_Clicked" Grid.Row="0" Grid.Column="0"/>
-            <Button Text="D12" x:Name="D12" Clicked="D12_Clicked" Grid.Row="0" Grid.Column="1"/>
-            <Button Text="D10" x:Name="D10" Clicked="D10_Clicked" Grid.Row="1" Grid.Column="0"/>
-            <Button Text="D8"  x:Name="D8"  Clicked="D8_Clicked"  Grid.Row="1" Grid.Column="1"/>
-            <Button Text="D6"  x:Name="D6"  Clicked="D6_Clicked"  Grid.Row="2" Grid.Column="0"/>
-            <Button Text="D4"  x:Name="D4"  Clicked="D4_Clicked"  Grid.Row="2" Grid.Column="1"/>
-
-        </Grid>
+            <Label Text="Roll" 
+                   FontSize="Large"
+                   HorizontalTextAlignment="Center"
+                   x:Name="MainLabel"/>
 
 
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand">
+            <!-- middle controls -->
 
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" VerticalOptions="End">
+            <!-- bottom controls -->
+
+            <Grid HorizontalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Button Text="D20" x:Name="D20" Clicked="D20_Clicked" Grid.Row="0" Grid.Column="0"/>
+                <Button Text="D12" x:Name="D12" Clicked="D12_Clicked" Grid.Row="0" Grid.Column="1"/>
+                <Button Text="D10" x:Name="D10" Clicked="D10_Clicked" Grid.Row="1" Grid.Column="0"/>
+                <Button Text="D8"  x:Name="D8"  Clicked="D8_Clicked"  Grid.Row="1" Grid.Column="1"/>
+                <Button Text="D6"  x:Name="D6"  Clicked="D6_Clicked"  Grid.Row="2" Grid.Column="0"/>
+                <Button Text="D4"  x:Name="D4"  Clicked="D4_Clicked"  Grid.Row="2" Grid.Column="1"/>
+            </Grid>
+
+        </StackLayout>
+        
         <Button Text="Menu" x:Name="MenuPageButton" Clicked="MenuPageButton_Clicked"/>
-
+        
     </StackLayout>
+
+
+
+    
 
 </ContentPage>
