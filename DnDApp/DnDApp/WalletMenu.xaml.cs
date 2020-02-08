@@ -32,12 +32,7 @@ namespace DnDApp
         //Updates database then clears all text box fields to null
         private void UpdateDataClearFields()
         {
-            //updates list with new table
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            {
-                var wallet = conn.Table<Money>().ToList();
-                MoneyListView.ItemsSource = wallet;
-            }
+            
             
             //Reset input boxes on press
             CopperTextBox.Text = null;
@@ -49,13 +44,7 @@ namespace DnDApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //creates a connection to the Database whenever the screen displays
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            {
-                conn.CreateTable<Money>();
-                var wallet = conn.Table<Money>().ToList();
-                MoneyListView.ItemsSource = wallet;
-            }
+            
         }
 
         private async void MainMenu_Clicked(object sender, EventArgs e)
@@ -78,11 +67,7 @@ namespace DnDApp
             //insert money into table
             try
             {
-                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-                {
-                    conn.CreateTable<Money>();
-                    conn.Insert(money);
-                }
+                
             }
             catch
             {
@@ -101,18 +86,7 @@ namespace DnDApp
         {
             try
             {
-                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-                {
-                    //removed all data from database
-                    conn.DeleteAll<Money>();
-                    //conn.Delete(MoneyListView.SelectedItem);
-
-                    UpdateDataClearFields();
-
-                    //deletes all primary keys and drops the table
-                    conn.DropTable<Money>();
-
-                }
+                
             }
             catch
             {
