@@ -56,7 +56,6 @@ namespace DnDApp
                 var wallet = conn.Table<Money>().ToList();
                 MoneyListView.ItemsSource = wallet;
             }
-
         }
 
         private async void MainMenu_Clicked(object sender, EventArgs e)
@@ -76,24 +75,26 @@ namespace DnDApp
                 Platinum = PlatinumTextBox.Text
             };
 
-            //Data displays after page is refreshed
+            //insert money into table
             try
             {
                 using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
                 {
                     conn.CreateTable<Money>();
-
-                    //conn.Get<Money>(0);
-                    int rowsAdded = conn.Insert(money);
+                    conn.Insert(money);
                 }
             }
             catch
             {
-                
+
             }
 
             UpdateDataClearFields();
 
+        }
+        private void UpdateButton_Clicked(object sender, EventArgs e)
+        {
+           
         }
 
         private void ClearData_Clicked(object sender, EventArgs e)
@@ -104,11 +105,13 @@ namespace DnDApp
                 {
                     //removed all data from database
                     conn.DeleteAll<Money>();
+                    //conn.Delete(MoneyListView.SelectedItem);
 
                     UpdateDataClearFields();
 
                     //deletes all primary keys and drops the table
                     conn.DropTable<Money>();
+
                 }
             }
             catch
@@ -116,5 +119,7 @@ namespace DnDApp
 
             }
         }
+
+        
     }
 }

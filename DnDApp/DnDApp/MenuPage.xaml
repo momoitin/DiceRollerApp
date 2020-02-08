@@ -43,9 +43,9 @@
                     x:Name="DamageMenu" 
                     Clicked="DamageMenu_Clicked"/>
             
-            <Button Text="Wallet" 
+            <!--<Button Text="Wallet" 
                     x:Name="WalletMenu" 
-                    Clicked="WalletMenu_Clicked"/>
+                    Clicked="WalletMenu_Clicked"/>-->
 
 
             <Grid>

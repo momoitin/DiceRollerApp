@@ -9,6 +9,7 @@ namespace DnDApp.Classes
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+
         public string Copper { get; set; }
 
         public string Silver { get; set; }

@@ -71,7 +71,7 @@
 
             </StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand">
-                <!-- middle controls -->
+                <!-- middle controls -->                
                 <Entry Placeholder="Copper"
                        Keyboard="Numeric"
                        x:Name="CopperTextBox"
@@ -92,6 +92,9 @@
                 <Button Text="Submit"
                         x:Name="SubmitButton"
                         Clicked="SubmitButton_Clicked"/>
+                <Button Text="Update"
+                        x:Name="UpdateButton"
+                        Clicked="UpdateButton_Clicked"/>
 
 
             </StackLayout>
