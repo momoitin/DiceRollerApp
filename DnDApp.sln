@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DnDApp.Android", "DnDApp\Dn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DnDApp", "DnDApp\DnDApp\DnDApp.csproj", "{343B0780-DEA7-4FB4-B345-4967695B2884}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backups", "Backups", "{6BB02209-F3AF-4031-BB0F-05F785D3F70E}"
+	ProjectSection(SolutionItems) = preProject
+		DnDApp\DnDApp\WalletMenu.xaml.cs = DnDApp\DnDApp\WalletMenu.xaml.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

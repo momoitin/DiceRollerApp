@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SQLite;
 using System.Linq;
+using System.IO;
 
 namespace DnDApp
 {
@@ -23,21 +24,39 @@ namespace DnDApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WalletMenu : ContentPage
 	{
-		public WalletMenu ()
+        public string FilePath = @"C:\Users\ringo\source\repos\DiceRollerApp\DnDApp\DnDApp.Android\Resources\Wallet.txt";
+
+
+        public WalletMenu ()
 		{
 			InitializeComponent ();
-            
-		}
+
+            List<string> lines = new List<string>();
+            lines = File.ReadAllLines(FilePath).ToList();
+            foreach (string line in lines)
+            {
+                CopperValue.Text = lines.ElementAt(0);
+                SilverValue.Text = lines.ElementAt(1);
+                GoldValue.Text = lines.ElementAt(2);
+                PlatValue.Text = lines.ElementAt(3);
+            }
+        }
+        private int StringToInt(string Money, string Total)
+        {
+            if (Money != "")
+            {
+                int value = Convert.ToInt32(Money) + Convert.ToInt32(Total);
+                return value;
+            }
+            else
+            {
+                return Convert.ToInt32(Total);
+            }
+        }
 
         //Updates database then clears all text box fields to null
         private void UpdateDataClearFields()
         {
-            //updates list with new table
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            {
-                var wallet = conn.Table<Money>().ToList();
-                MoneyListView.ItemsSource = wallet;
-            }
             
             //Reset input boxes on press
             CopperTextBox.Text = null;
@@ -49,13 +68,7 @@ namespace DnDApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            //creates a connection to the Database whenever the screen displays
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            {
-                conn.CreateTable<Money>();
-                var wallet = conn.Table<Money>().ToList();
-                MoneyListView.ItemsSource = wallet;
-            }
+            
 
         }
 
@@ -67,54 +80,27 @@ namespace DnDApp
         
         private void SubmitButton_Clicked(object sender, EventArgs e)
         {
-            //Generates data from text boxes to be sent to the database
-            Money money = new Money()
-            {
-                Copper = CopperTextBox.Text,
-                Silver = SilverTextBox.Text,
-                Gold = GoldTextBox.Text,
-                Platinum = PlatinumTextBox.Text
-            };
+            CopperValue.Text = (StringToInt(CopperTextBox.Text, CopperValue.Text)).ToString();
 
-            //Data displays after page is refreshed
-            try
-            {
-                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-                {
-                    conn.CreateTable<Money>();
+            SilverValue.Text = (StringToInt(SilverTextBox.Text, SilverValue.Text)).ToString();
 
-                    //conn.Get<Money>(0);
-                    int rowsAdded = conn.Insert(money);
-                }
-            }
-            catch
-            {
-                
-            }
+            GoldValue.Text = (StringToInt(GoldTextBox.Text, GoldValue.Text)).ToString();
 
-            UpdateDataClearFields();
+            PlatValue.Text = (StringToInt(PlatTextBox.Text, PlatValue.Text)).ToString();
 
+            //creates a single string with multiple lines with each value.
+            String Wallet = CopperValue.Text + "\n" + SilverValue.Text + "\n" + GoldValue.Text + "\n" + PlatValue.Text;
+            File.WriteAllText(FilePath, Wallet);
         }
 
         private void ClearData_Clicked(object sender, EventArgs e)
         {
-            try
-            {
-                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-                {
-                    //removed all data from database
-                    conn.DeleteAll<Money>();
+            
+        }
 
-                    UpdateDataClearFields();
-
-                    //deletes all primary keys and drops the table
-                    conn.DropTable<Money>();
-                }
-            }
-            catch
-            {
-
-            }
+        private void UpdateButton_Clicked(object sender, EventArgs e)
+        {
+            
         }
     }
 }
