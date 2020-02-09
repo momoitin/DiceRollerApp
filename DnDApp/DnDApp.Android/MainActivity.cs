@@ -22,7 +22,7 @@ namespace DnDApp.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
             //Database File name and path
-            string fileName = "Money.db3";
+            string fileName = "Wallet.txt";
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string completePath = Path.Combine(folderPath, fileName);
 

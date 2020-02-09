@@ -33,41 +33,45 @@
 
             <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="5,10">
                 <!-- top controls -->
-                <ListView x:Name="MoneyListView"
-                          Visual="Default"
-                          HasUnevenRows="True">
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                    </Grid.ColumnDefinitions>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                                    <StackLayout Grid.Column="0">
-                                        <Label Text="ID:       " FontSize="Large"/>
-                                        <Label Text="Copper:   " FontSize="Large"/>
-                                        <Label Text="Silver:   " FontSize="Large"/>
-                                        <Label Text="Gold:     " FontSize="Large"/>
-                                        <Label Text="Platinum: " FontSize="Large"/>
-                                    </StackLayout>
-
-                                    <StackLayout Grid.Column="1">
-                                        <Label Text="{Binding Id}"       TextColor="Chocolate"  FontSize="Large"/>
-                                        <Label Text="{Binding Copper}"   TextColor="BlueViolet" FontSize="Large"/>
-                                        <Label Text="{Binding Silver}"   TextColor="BlueViolet" FontSize="Large"/>
-                                        <Label Text="{Binding Gold}"     TextColor="BlueViolet" FontSize="Large"/>
-                                        <Label Text="{Binding Platinum}" TextColor="BlueViolet" FontSize="Large"/>
-                                    </StackLayout>
-                                </Grid>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    <Label Text="Copper: "
+                           Grid.Column="0"
+                           Grid.Row="0"/>
+                    <Label x:Name="CopperValue"
+                           Grid.Column="1"
+                           Grid.Row="0"/>
+                    
+                    <Label Text="Silver: "
+                           Grid.Column="0"
+                           Grid.Row="1"/>
+                    <Label x:Name="SilverValue"
+                           Grid.Column="1"
+                           Grid.Row="1"/>
+                    
+                    <Label Text="Gold: "
+                           Grid.Column="0"
+                           Grid.Row="2"/>
+                    <Label x:Name="GoldValue"
+                           Grid.Column="1"
+                           Grid.Row="2"/>
+                    
+                    <Label Text="Platinum: "
+                           Grid.Column="0"
+                           Grid.Row="3"/>
+                    <Label x:Name="PlatValue"
+                           Grid.Column="1"
+                           Grid.Row="3"/>
+                    
+                    
+                </Grid>
 
             </StackLayout>
             <StackLayout VerticalOptions="CenterAndExpand">
@@ -93,9 +97,7 @@
                         x:Name="SubmitButton"
                         Clicked="SubmitButton_Clicked"/>
                 
-                <Button Text="Update"
-                        x:Name="UpdateButton"
-                        Clicked="UpdateButton_Clicked"/>
+                
 
 
             </StackLayout>
@@ -105,7 +107,6 @@
                 
                 <!--When Pressed, Brings user to main menu-->
                 <Button Text="Menu" x:Name="MainMenu" Clicked="MainMenu_Clicked"/>
-                <Button Text="Clear Data" x:Name="ClearData" Clicked="ClearData_Clicked"/>
             </StackLayout>
 
 
