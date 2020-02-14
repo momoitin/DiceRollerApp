@@ -20,6 +20,7 @@
 
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="{DynamicResource textColor}"/>
+            <Setter Property="FontSize" Value="Large"/>
         </Style>
 
         <Style TargetType="Entry">
@@ -31,7 +32,7 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <StackLayout Orientation="Horizontal" VerticalOptions="Center" Padding="5,10">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Center" Padding="5,10">
                 <!-- top controls -->
 
                 <Grid>
@@ -69,8 +70,6 @@
                     <Label x:Name="PlatValue"
                            Grid.Column="1"
                            Grid.Row="3"/>
-                    
-                    
                 </Grid>
 
             </StackLayout>
@@ -97,24 +96,14 @@
                         x:Name="SubmitButton"
                         Clicked="SubmitButton_Clicked"/>
                 
-                
-
-
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="End" HorizontalOptions="CenterAndExpand">
                 <!-- bottom controls -->
-                
-                
+
+
                 <!--When Pressed, Brings user to main menu-->
                 <Button Text="Menu" x:Name="MainMenu" Clicked="MainMenu_Clicked"/>
             </StackLayout>
-
-
-            
-
-
-
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

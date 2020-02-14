@@ -13,8 +13,9 @@ using System.IO;
 namespace DnDApp
 {
 
-    //Data is saved to database
+    //Data is saved to Text File
     //Listview updates when page is refreshed
+
     //ToDo: 
     //1. Make a new screen to add money
     //2. Done: make copper, silver, gold, and platinum display seperatly 
@@ -24,12 +25,6 @@ namespace DnDApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class WalletMenu : ContentPage
 	{
-
-        
-
-
-
-
         public WalletMenu ()
 		{
 			InitializeComponent ();
@@ -76,8 +71,6 @@ namespace DnDApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            
-
         }
 
         private async void MainMenu_Clicked(object sender, EventArgs e)
@@ -85,7 +78,6 @@ namespace DnDApp
             await Navigation.PushAsync(new MenuPage());
         }
 
-        
         private void SubmitButton_Clicked(object sender, EventArgs e)
         {
             CopperValue.Text = (StringToInt(CopperTextBox.Text, CopperValue.Text)).ToString();
@@ -97,6 +89,7 @@ namespace DnDApp
             String Wallet = CopperValue.Text + "\n" + SilverValue.Text + "\n" + GoldValue.Text + "\n" + PlatValue.Text;
             File.WriteAllText(App.FilePath, Wallet);
 
+            //Calls Function to read data from file and insert data into wallet values.
             UpdateDataClearFields();
         }
     }
